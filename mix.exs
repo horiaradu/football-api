@@ -7,7 +7,7 @@ defmodule MyApp.MixProject do
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix, :gettext, :phoenix_swagger] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -36,7 +36,18 @@ defmodule MyApp.MixProject do
       {:phoenix_pubsub, "~> 1.1"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:phoenix_swagger, git: "https://github.com/xerions/phoenix_swagger.git"},
+      {:cors_plug, "~> 1.4"},
+      {:poison, "~> 3.1"}
+    ]
+  end
+
+  defp aliases do
+    [
+      swagger: [
+        "phx.swagger.generate priv/static/swagger.json --router MyAppWeb.Router --endpoint MyAppWeb.Endpoint"
+      ]
     ]
   end
 end

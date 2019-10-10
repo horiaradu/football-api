@@ -1,6 +1,8 @@
 defmodule MyAppWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :my_app
 
+  plug CORSPlug
+
   socket "/socket", MyAppWeb.UserSocket,
     websocket: true,
     longpoll: false
@@ -13,7 +15,7 @@ defmodule MyAppWeb.Endpoint do
     at: "/",
     from: :my_app,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js favicon.ico robots.txt swagger.json)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

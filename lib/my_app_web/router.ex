@@ -10,4 +10,13 @@ defmodule MyAppWeb.Router do
 
     get "/games", GameController, :index
   end
+
+  def swagger_info do
+    %{
+      info: %{
+        version: "1.0",
+        title: "My App"
+      }
+    }
+  end
 end
