@@ -2,7 +2,7 @@ defmodule MyAppWeb.GameView do
   use MyAppWeb, :view
 
   def render("index.json", %{games: games}) do
-    %{data: render_many(games, MyAppWeb.GameView, "game.json")}
+    render_many(games, MyAppWeb.GameView, "game.json")
   end
 
   def render("game.json", %{game: game}) do
