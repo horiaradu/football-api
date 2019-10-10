@@ -7,5 +7,7 @@ defmodule MyAppWeb.Router do
 
   scope "/api", MyAppWeb do
     pipe_through :api
+
+    get "/games", FootballController, :index
   end
 end
