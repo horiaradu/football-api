@@ -17,4 +17,18 @@ defmodule MyAppWeb.GameView do
       ftag: game.ftag
     }
   end
+
+  def render("index.proto", %{games: games}) do
+    games =
+      Enum.map(games, fn
+        game ->
+          MyAppWeb.Games.Game.new(
+            id: game.id,
+            league: game.league,
+            season: game.season
+          )
+      end)
+
+    MyAppWeb.Games.Games.new(games: games)
+  end
 end

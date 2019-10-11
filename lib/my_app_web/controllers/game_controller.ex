@@ -27,22 +27,12 @@ defmodule MyAppWeb.GameController do
 
     data = MyAppWeb.GamesService.games(qLeague, qSeason)
 
-    render(conn, "index.json", games: data)
-  end
-
-  def index_proto(conn, params) do
-    android =
-      MyAppWeb.Games.Game.new(
-        id: "1",
-        league: "SP1",
-        season: "201516"
-      )
-
-    resp = MyAppWeb.Games.Game.encode(android)
-
-    conn
-    |> put_resp_header("content-type", "application/octet-stream")
-    |> send_resp(200, resp)
+    get_req_header(conn, "content-type")
+    |> IO.inspect()
+    |> case do
+      ["application/x-protobuf"] -> render(conn, "index.proto", games: data)
+      _ -> render(conn, "index.json", games: data)
+    end
   end
 
   def swagger_definitions do

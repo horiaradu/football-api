@@ -1,5 +1,8 @@
 defmodule MyAppWeb.Games do
   use Protobuf, """
+    message Games {
+      repeated Game games = 1;
+    }
     message Game {
       required string id = 1;
       required string league = 2;
@@ -9,7 +12,7 @@ defmodule MyAppWeb.Games do
 
   def safe_decode(bytes) do
     try do
-      {:ok, MyAppWeb.Games.Game.decode(bytes)}
+      {:ok, MyAppWeb.Games.Games.decode(bytes)}
     rescue
       ErlangError ->
         {:error, "Error encoding data"}
