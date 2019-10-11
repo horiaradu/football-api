@@ -11,6 +11,8 @@ RUN mix local.hex --force
 # Compile the project
 RUN mix do compile
 
+RUN mix phx.swagger.generate
+
 EXPOSE 4000
 
 CMD ["mix", "phx.server"]
