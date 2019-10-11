@@ -38,6 +38,9 @@ config :my_app, :phoenix_swagger,
 
 # protobuf
 config :phoenix, :format_encoders, proto: MyAppWeb.ProtoFormatEncoder
+config :mime, :types, %{
+  "application/x-proto" => ["proto"]
+}
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -11,6 +11,7 @@ defmodule MyAppWeb.GameController do
       league(:query, :string, "The league for which to retrieve games")
       season(:query, :string, "The season for which to retrieve games")
     end
+    parameter("Accept", :header, :string, "The content type of the response", enum: ["application/json", "application/x-proto"])
 
     response(200, "Ok", Schema.ref(:Games))
   end
@@ -27,10 +28,10 @@ defmodule MyAppWeb.GameController do
 
     data = MyAppWeb.GamesService.games(qLeague, qSeason)
 
-    get_req_header(conn, "content-type")
+    get_req_header(conn, "accept")
     |> IO.inspect()
     |> case do
-      ["application/x-protobuf"] -> render(conn, "index.proto", games: data)
+      ["application/x-proto"] -> render(conn, "index.proto", games: data)
       _ -> render(conn, "index.json", games: data)
     end
   end

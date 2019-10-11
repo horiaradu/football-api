@@ -2,7 +2,7 @@ defmodule MyAppWeb.Router do
   use MyAppWeb, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, ["json", "proto"]
   end
 
   scope "/api", MyAppWeb do
