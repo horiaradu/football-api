@@ -11,6 +11,8 @@ defmodule MyAppWeb.Router do
     get "/games", GameController, :index
   end
 
+  forward "/check", HealthCheckup
+
   def swagger_info do
     %{
       info: %{

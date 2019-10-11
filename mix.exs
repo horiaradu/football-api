@@ -39,7 +39,8 @@ defmodule MyApp.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_swagger, git: "https://github.com/xerions/phoenix_swagger.git"},
       {:cors_plug, "~> 1.4"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:health_checkup, "~> 0.1.0"}
     ]
   end
 
