@@ -9,6 +9,7 @@ defmodule MyAppWeb.Router do
     pipe_through :api
 
     get "/games", GameController, :index
+    get "/games-proto", GameController, :index_proto
   end
 
   forward "/check", HealthCheckup

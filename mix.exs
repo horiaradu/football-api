@@ -19,7 +19,7 @@ defmodule MyApp.MixProject do
   def application do
     [
       mod: {MyApp.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :exprotobuf]
     ]
   end
 
@@ -40,7 +40,8 @@ defmodule MyApp.MixProject do
       {:phoenix_swagger, git: "https://github.com/xerions/phoenix_swagger.git"},
       {:cors_plug, "~> 1.4"},
       {:poison, "~> 3.1"},
-      {:health_checkup, "~> 0.1.0"}
+      {:health_checkup, "~> 0.1.0"},
+      {:exprotobuf, "~> 1.2.17"}
     ]
   end
 

@@ -30,6 +30,21 @@ defmodule MyAppWeb.GameController do
     render(conn, "index.json", games: data)
   end
 
+  def index_proto(conn, params) do
+    android =
+      MyAppWeb.Games.Game.new(
+        id: "1",
+        league: "SP1",
+        season: "201516"
+      )
+
+    resp = MyAppWeb.Games.Game.encode(android)
+
+    conn
+    |> put_resp_header("content-type", "application/octet-stream")
+    |> send_resp(200, resp)
+  end
+
   def swagger_definitions do
     %{
       Game:
