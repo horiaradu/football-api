@@ -1,16 +1,22 @@
 defmodule MyAppWeb.GamesService do
+  @all_games File.read!("data/Data.csv")
+             |> String.split("\n")
+             |> Enum.map(&String.split(&1, ","))
+             |> Enum.filter(fn
+               [_, "Div" | _] ->
+                 false
+
+               [""] ->
+                 false
+
+               _ ->
+                 true
+             end)
+
   def games(qLeague, qSeason) do
     data =
-      File.read!("data/Data.csv")
-      |> String.split("\n")
-      |> Enum.map(&String.split(&1, ","))
+      @all_games
       |> Enum.filter(fn
-        [_, "Div" | _] ->
-          false
-
-        [""] ->
-          false
-
         [_, league, season | _]
         when qLeague != nil and qSeason != nil and (league != qLeague or season != qSeason) ->
           false
