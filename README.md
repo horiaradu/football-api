@@ -1,18 +1,9 @@
-# MyApp
+# Football API
 
-To start your Phoenix server:
+To start the application, run `docker-compose up`.
 
-  * Install dependencies with `mix deps.get`
-  * Start Phoenix endpoint with `mix phx.server`
+The API documentation can be found at `http://localhost:8080/swagger.json`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+The endpoint can be found at `http://localhost:8080/api/games`. Via the `Accept` header, you can control what mime type do you want:
+* application/json for JSON
+* appliacation/x-proto for Protobuf
